@@ -2,7 +2,7 @@ export interface Env {
 	FOREFRONT_KEY: string;
 }
 
-const url = 'https://shared-api.forefront.link/organization/d5I0q8EinB6I/gpt-j-6b-vanilla/completions/4fVl6eeEs021';
+const url = 'https://shared-api.forefront.link/organization/d5I0q8EinB6I/gpt-j-6b-vanilla/completions/gSy5fjFBDhCz';
 
 export default {
 	async fetch(
