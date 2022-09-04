@@ -30,18 +30,25 @@ export default {
 			text: `The following is an interaction between two people, identified by the numbers 0 and ${id}. ${id} begins and 0 responds.\n\n${id}: ${msg}\n0:`,
 			top_p: 1,
 			top_k: 40,
-			temperature: 0.9,
+			temperature: 0.7,
 			repetition_penalty: 1,
 			length: 24,
 		};
 
-		const res = await fetch(url, {
-			method: 'POST',
-			headers,
-			body: JSON.stringify(body)
-		});
+		try {
+			const res = await fetch(url, {
+				method: 'POST',
+				headers,
+				body: JSON.stringify(body)
+			});
 
-		const data = await res.json();
-		return new Response(JSON.stringify(data));
+			const data = await res.json();
+			return new Response(JSON.stringify(data));
+		} catch (error) {
+			return new Response("Internal server error: " + error, {
+				status: 500,
+				statusText: (error as Error).name,
+			});
+		}
 	},
 };
